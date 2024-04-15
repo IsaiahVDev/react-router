@@ -12,7 +12,7 @@ export async function action({ request, params }) {
       favorite: formData.get("favorite") === "true",
     });
   }
-  
+
 export default function Contact() {
     const { contact } = useLoaderData(); 
     first: "Your",
@@ -86,6 +86,9 @@ function Favorite({ contact }) {
   // yes, this is a `let` for later
   const fetcher = useFetcher();
   let favorite = contact.favorite;
+  if (fetcher.formData) {
+    favorite = fetcher.formData.get("favorite") === "true";
+  }
   return (
     <fetcher.Form method="post">
       <button
